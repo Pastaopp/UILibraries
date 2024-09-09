@@ -14,13 +14,13 @@ end
 local gethui = (gethui ~= nil and gethui or false)
 
 if not gethui then
-	gethui = function() return game.Players.LocalPlayer:WaitForChild("CoreGui") end
+	gethui = function() return game:WaitForChild("CoreGui") end
 end
 
 function lib:init(ti, dosplash, visiblekey, deleteprevious)
 	if true then -- Syn?
 
-		cg = game.Players.LocalPlayer:WaitForChild("CoreGui")
+		cg = game:WaitForChild("CoreGui")
 		if cg:FindFirstChild("ScreenGui") and deleteprevious then
 			tp(cg.ScreenGui.main, cg.ScreenGui.main.Position + UDim2.new(0,0,2,0), 0.5)
 			game:GetService("Debris"):AddItem(cg.ScreenGui, 1)
@@ -28,7 +28,7 @@ function lib:init(ti, dosplash, visiblekey, deleteprevious)
 
 		-- main
 		scrgui = Instance.new("ScreenGui")
-		scrgui.Parent = game.Players.LocalPlayer:WaitForChild("CoreGui")
+		scrgui.Parent = game:WaitForChild("CoreGui")
 	elseif gethui then
 		if gethui():FindFirstChild("ScreenGui") and deleteprevious then
 			gethui().ScreenGui.main:TweenPosition(gethui().ScreenGui.main.Position + UDim2.new(0,0,2,0), "InOut", "Quart", 0.5)
